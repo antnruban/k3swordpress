@@ -10,13 +10,6 @@ metadata:
   namespace: wp-blog
   labels:
     app: wordpress
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-#   name: postgres-config
-#   namespace: wp-blog
-#   labels:
-#     app: wordpress
 data:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: postgresadmin

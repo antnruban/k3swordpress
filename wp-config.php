@@ -19,17 +19,21 @@
  */
 
 // ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'postgresdb');
+// * The name of the database for WordPress
+// define('DB_NAME', 'wp-blog');
+define('DB_NAME', getenv('DB_NAME'));
 
 /** MySQL database username */
-define('DB_USER', 'postgresadmin');
+// define('DB_USER', 'wp-user');
+define('DB_USER', getenv('DB_USER'));
 
 /** MySQL database password */
-define('DB_PASSWORD', '1admin23');
+// define('DB_PASSWORD', 'D$in1Ump?');
+define('DB_PASSWORD', getenv('DB_PASSWORD'));
 
 /** MySQL hostname */
-define('DB_HOST', '192.168.88.198:30851');
+// define('DB_HOST', '192.168.88.198:30851');
+define('DB_HOST', getenv('DB_HOST'));
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -40,14 +44,14 @@ define('DB_HOST', '192.168.88.198:30851');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'here a unique phrase');
-define('SECURE_AUTH_KEY',  'here a unique phrase');
-define('LOGGED_IN_KEY',    'here a unique phrase');
-define('NONCE_KEY',        'here a unique phrase');
-define('AUTH_SALT',        'here a unique phrase');
-define('SECURE_AUTH_SALT', 'here a unique phrase');
-define('LOGGED_IN_SALT',   'here a unique phrase');
-define('NONCE_SALT',       'here a unique phrase');
+define('AUTH_KEY',         '}q1D$in1Ump?iP5=3o j7~0uiwyl*~P42WuRZug-SgHK<)MMdNbh#m}SQwMq]Tkj');
+define('SECURE_AUTH_KEY',  'u$MA:~-u`i}FV+(uCKz?R;gbHO!:yZ+||zge@3A[[JJ+EggA$z7Rpd(C^5|_&^A+');
+define('LOGGED_IN_KEY',    '+U%$53~REY`|%in.NNMrl$/e0hWVxDF#O9R&XABBO2h%A4FQ`s[csV@>0U798<-l');
+define('NONCE_KEY',        '&d?DNjA6l[QCw0zO;dl.9.d-+6*$J<0LasA{~.MZ|>MGNK-kH-,:3Q3v=rTQ=LO[');
+define('AUTH_SALT',        'AN,]_f}6(d9?/+Xa%%=%#gY-Ok95trh;1-eQOnX+@eru%c`q?+~<JOn1PEZC,89&');
+define('SECURE_AUTH_SALT', 'nTL@BQ3w02q.wM|xAq(|9yTnw?!]o!+UAQcf~+Jit`cu(cnN8J.i;lKTb~Di<CZM');
+define('LOGGED_IN_SALT',   'R}Vqaz0[>[<Y=pX?^JGo66=a=Q`fG]Mn=DgcR}6c-:j1e-p/>YJ9FDXJc*DH*Ti~');
+define('NONCE_SALT',       'ath+>dAe?q^jX_c^kT9|L7E<^[[%<;!xs5&f.$hPRt?[287.KFA*c/d6wqm:h%v-');
 
 /**#@-*/
 
@@ -80,3 +84,4 @@ if ( !defined('ABSPATH') )
   define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
+require_once ABSPATH . 'wp-settings.php';

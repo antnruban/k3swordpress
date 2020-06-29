@@ -3,11 +3,6 @@ kind: Namespace
 metadata:
   name: postgres
 ---
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-#   name: postgres-config
-#   namespace: postgres
 apiVersion: v1
 kind: ConfigMap
 metadata:
