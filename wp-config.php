@@ -20,20 +20,20 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 // * The name of the database for WordPress
-// define('DB_NAME', 'wp-blog');
-define('DB_NAME', getenv('DB_NAME'));
+define('DB_NAME', 'my-db');
+// define('DB_NAME', getenv('MYSQL_DATABASE'));
 
 /** MySQL database username */
 // define('DB_USER', 'wp-user');
-define('DB_USER', getenv('DB_USER'));
+define('DB_USER', 'root');
 
 /** MySQL database password */
-// define('DB_PASSWORD', 'D$in1Ump?');
-define('DB_PASSWORD', getenv('DB_PASSWORD'));
+define('DB_PASSWORD', 'mysecurepass');
+// define('DB_PASSWORD', getenv('MYSQL_ROOT_PASSWORD'));
 
 /** MySQL hostname */
 // define('DB_HOST', '192.168.88.198:30851');
-define('DB_HOST', getenv('DB_HOST'));
+define('DB_HOST', '192.168.88.200:30259');
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -75,7 +75,8 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
+define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
 
 /* That's all, stop editing! Happy blogging. */
 

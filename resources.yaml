@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wp-blog
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wp-blog-config-map
+  namespace: wp-blog
+  labels:
+    app: wp-blog
+data:
+  MYSQL_ROOT_PASSWORD: mysecurepass
+  MYSQL_DATABASE: my-db
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wp-blog-mysql-pv
+  namespace: wp-blog
+  labels:
+    type: local
+    app: mysql
+spec:
+  storageClassName: local
+  capacity:
+    storage: 500M
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain # Set to 'Recycle' for keeping data
+  hostPath:
+    path: "/mnt/data"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: wp-blog-wordpress-pv
+  namespace: wp-blog
+  labels:
+    app: wordpress
+spec:
+  storageClassName: local
+  capacity:
+    storage: 500M
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/data/wordpress"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-blog-mysql-pvc
+  namespace: wp-blog
+  labels:
+    app: mysql
+spec:
+  storageClassName: local
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500M
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-blog-wordpress-pvc
+  namespace: wp-blog
+  labels:
+    app: wordpress
+spec:
+  storageClassName: local
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500M
