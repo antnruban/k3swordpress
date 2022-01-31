@@ -87,20 +87,38 @@ spec:
   type: NodePort
 
 ---
-apiVersion: extensions/v1beta1
+# old ingress
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: wordpress
+#   namespace: wordpress
+# spec:
+#   rules:
+#     - host: wordpress.10.0.100.99.nip.io
+#       http:
+#         paths:
+#           - path: /
+#             backend:
+#               serviceName: wordpress
+#               servicePort: 80
+
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wordpress
   namespace: wordpress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+
 spec:
   rules:
-    - host: wordpress.10.0.100.99.nip.io
-      http:
+    -  http:
         paths:
-          - path: /
+          - path: /blog
+            pathType: Prefix
             backend:
-              serviceName: wordpress
-              servicePort: 80
-
-# exblog
-# H3E)N@n#rzQubJS*)O
+              service:
+                name: wordpress
+                port:
+                  number: 80

@@ -18,8 +18,7 @@ metadata:
   labels:
     app: wordpress
 data:
-  # This value is base64-encoded. Do not use this password in production!
-  password: bXlzZWNwYXNz # mysecpass
+  password: # mysecpass see .env
 
 ---
 apiVersion: v1
@@ -36,7 +35,7 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Recycle # Cast it into `Retain`
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/mnt/data"
 
